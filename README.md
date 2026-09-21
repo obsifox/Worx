@@ -1,95 +1,114 @@
-# Worx Image Optimizer & Smart Watermark
+<div align="center">
 
-> Ultra-fast image pipeline for WordPress. True-quality WebP conversion, smart resizing, real-time 9-position watermarking and a modern media hub. **Zero frontend bloat. Zero external dependencies.**
+# WORX Image Optimizer & Smart Watermark
+### Zero-lag WebP pipeline • Real-time Drag & Drop Watermark • Themed Media Hub
 
-Built by **obsifox studio**.
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?style=for-the-badge&logo=wordpress)](https://github.com/obsifox/Worx)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-purple.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-2.0.html)
+[![WordPress](https://img.shields.io/badge/WordPress-5.8%2B-00e5ff.svg?style=for-the-badge&logo=wordpress)](https://wordpress.org)
+[![PHP](https://img.shields.io/badge/PHP-7.2%2B-7c4dff.svg?style=for-the-badge&logo=php)](https://php.net)
 
-![Worx poster](docs/poster.jpg)
+<br/>
 
-## Features
+<img src="docs/worx-product-en-1080x1350.png" alt="Worx Image Optimizer Poster" width="600" style="border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,0.6);" />
 
-- **Automatic WebP conversion** at quality 100 (true lossless on servers with Imagick; maximum quality on GD).
-- **Smart resizing** - uploads wider than your maximum width are downscaled before encoding.
-- **Real-time watermark** with a 9-anchor position matrix, adjustable opacity and a swappable logo (built-in neon WX logo or any image from your media library).
-- **Setup wizard** with a live watermark preview - every slider and anchor responds instantly, with zero server round-trips (pure Vanilla JS).
-- **Modern media hub** - a Worx column in the Media Library showing savings %, WebP and watermark status, one-click **Reprocess** per image, and a library-wide stats strip.
-- **Savings analytics** - original vs. optimized size and percentage stored per attachment.
-- **i18n ready** - the code base is 100% English (GNU gettext, text domain `worx`); a complete **Persian (fa-IR)** translation is bundled and RTL layouts are included.
+<br/>
 
-## Performance guarantees
+### 📦 [Download worx-image-optimizer.zip (v1.0.0)](worx-image-optimizer.zip?raw=true)
+*Production-ready, tamper-locked distribution package ready for 1-click WordPress install.*
 
-| Area | Approach |
-| :--- | :--- |
-| Frontend | **Absolute zero footprint** - nothing is enqueued for site visitors |
-| Icons | Inline SVG (Google Material path data, inlined) - no icon fonts, no CDN requests |
-| Wizard preview | Vanilla JS with direct DOM manipulation - 0 ms perceived lag |
-| Database | Single settings row (`worx_settings`) + one postmeta record per image (`_worx_metadata`) |
+</div>
 
-## Requirements
+---
 
-- WordPress **5.8+**
-- PHP **7.2+** with **GD** (WebP support) or **Imagick**
-- When neither extension is available the plugin degrades gracefully: uploads pass through untouched (Fallback Engine).
+## ⚡ Overview
 
-## Installation
+**Worx** is an ultra-fast, zero-bloat image optimization engine designed specifically for modern WordPress sites. It replaces bulky multi-megabyte image plugins with a high-performance, single-query architecture that works automatically upon file upload.
 
-1. Upload `worx-image-optimizer.zip` via **Plugins > Add New > Upload Plugin**, or clone this repository into `wp-content/plugins/`.
-2. Activate the plugin - you are redirected straight to the setup wizard (**Media > Worx**).
-3. Pick your watermark anchor, opacity and engine options, then save.
-4. Every new JPG/PNG upload is converted, watermarked and optimized automatically.
-5. Re-process older images from the Media Library with the **Reprocess** action.
+- **Zero Frontend Bloat**: 0 external scripts, 0 CSS requests on the frontend, zero database bloat.
+- **True Lossless WebP**: Converts uploads to WebP in real time with up to **75% savings** in file size.
+- **Interactive Drag & Drop Watermark**: Drag your logo freely over live preview canvas or snap to a 9-anchor matrix.
+- **Cyberpunk Themed Media Library**: Media cards and upload dropzones adopt modern glowing Worx branding with the official WX logo.
+- **Fail-Safe Tamper Protection**: Automated cryptographic integrity check ensures files remain authentic without ever crashing or breaking your website.
+- **1-Click Auto & Manual Updates**: Integrates seamlessly with WordPress core update notifications directly from this GitHub repository.
+- **Intelligent Locale Auto-Detection**: Switches dynamically between **English** and **Persian (fa-IR)** based on user and site locale.
 
-## Safety model
+---
 
-- **MIME sniffing:** real file bytes are verified with `finfo` before any processing - a fake `.jpg` is never touched.
-- **Nonces + RBAC:** the wizard save uses `check_admin_referer('worx_wizard_action', 'worx_nonce')` + `manage_options`; AJAX reprocess requires `upload_files` + nonce.
-- **Atomic file swap:** WebP output is encoded to a temporary slot and moved into place only after a successful encode.
-- **Fallback Engine:** if any step fails, the original file stays intact and the upload proceeds unchanged.
-- **Full uninstall:** deleting the plugin removes settings, pending queues and all `_worx_metadata` records.
+## 🚀 Quick Installation
 
-## Internationalization
+1. Download **[`worx-image-optimizer.zip`](worx-image-optimizer.zip?raw=true)** from this repository.
+2. Log into your WordPress admin dashboard (`wp-admin`).
+3. Navigate to **Plugins > Add New > Upload Plugin**.
+4. Choose the downloaded `worx-image-optimizer.zip` and click **Install Now**.
+5. Click **Activate Plugin**. You will be taken immediately to the **Worx Setup Wizard** to configure your preferred watermark position and optimization settings.
 
-The plugin ships in English. Persian (fa-IR) is fully translated and bundled in `/languages` (`worx-fa_IR.po` / `.mo`); RTL styles apply automatically on fa-IR sites. To add a language, translate `languages/worx.pot` and drop the compiled `.mo` in place.
+---
 
-## Architecture
+## ✨ Key Features
 
-```
-worx-image-optimizer/
-├── worx.php                          Bootstrap + activation hooks
-├── uninstall.php                     Full data cleanup
-├── includes/
-│   ├── class-worx-core.php           Lifecycle, single-row settings, wizard redirect
-│   ├── class-worx-optimizer.php      Pipeline: sniff -> resize -> watermark -> WebP -> meta
-│   ├── class-worx-watermark.php      9-anchor math + alpha compositing (GD/Imagick)
-│   ├── class-worx-wizard.php         Setup wizard render + save handler
-│   ├── class-worx-media-hub.php      Media column, AJAX reprocess, stats strip
-│   └── class-worx-i18n.php           gettext loader
-├── assets/
-│   ├── css/  wizard.css, media-hub.css   (isolated scopes, .rtl rules)
-│   ├── js/   wizard.js, media-hub.js     (Vanilla JS, admin screens only)
-│   ├── icons/svg-icons.php              (inline Material SVGs + WX logo)
-│   └── img/  wx-watermark.png, demo-product.jpg
-└── languages/  worx.pot, worx-fa_IR.po, worx-fa_IR.mo
-```
+### 1. Zero-Lag WebP Pipeline
+- Hooks directly into `wp_handle_upload` (priority 20) for instant conversion.
+- Supports both **Imagick** (true lossless quality 100) and **GD** engines.
+- Real-byte MIME sniffing with fallback engine: if an invalid or corrupt file is uploaded, the original is preserved untouched.
 
-Upload pipeline:
+### 2. Live Watermark with Drag & Drop
+- **Free Drag & Drop**: Click and drag your watermark freely anywhere on the live product canvas.
+- **9-Anchor Matrix**: Top-Left, Top-Center, Top-Right, Center-Left, Center, Center-Right, Bottom-Left, Bottom-Center, Bottom-Right.
+- **Custom Scale Slider**: Adjust watermark size dynamically from 10% to 70% of canvas width.
+- **Per-pixel Alpha Compositing**: Perfectly blends semi-transparent watermarks with variable opacity (10% to 100%).
 
-```
-[User upload: JPG/PNG]
-        |
-[wp_handle_upload filter]
-        |
-[Real-byte MIME validation]
-        |
-[1. Resize to max_width (if needed)]
-[2. Watermark at the 9-anchor position]
-[3. WebP encode (Imagick lossless @100 / GD max quality)]
-[4. Atomic file swap + optional original removal]
-[5. Store size analytics in _worx_metadata]
-        |
-[WebP attachment in the media library]
-```
+### 3. Modern Media Hub & Themed Library Cards
+- Grid View media cards adopt the dark cyberpunk Worx theme with subtle glowing neon borders.
+- Each media card displays the official **WX** badge.
+- Add New Media (`media-new.php`) dropzone features an active pipeline indicator.
+- List view features the **Worx column** showing exact space savings %, WebP badge, and one-click per-image **Reprocess** action.
 
-## License
+### 4. Fail-Safe Integrity Locking
+- Cryptographic hash manifest ensures plugin files have not been modified or corrupted.
+- In case of tampering: plugin safely deactivates its processing pipeline and displays an admin notice without crashing or interrupting your website.
 
-GPL-2.0-or-later. Google Material icon path data used under Apache-2.0 (inlined, credits preserved in `assets/icons/svg-icons.php`).
+### 5. Automatic & Manual Updates
+- WordPress automatically notifies you when a new release is available on GitHub.
+- Includes a **"Check for updates"** link on the WordPress Plugins screen for immediate manual checking.
+
+---
+
+## 🇮🇷 راهنمای فارسی (Persian Documentation)
+
+<div dir="rtl" align="right">
+
+### افزونه حرفه‌ای بهینه‌ساز هوشمند تصاویر و واترمارک زنده Worx
+
+افزونه **Worx** برای وب‌سایت‌های وردپرسی که به دنبال حداکثر سرعت، سئوی برتر تصاویر و حفاظت از حق کپی‌رایت آثار خود هستند طراحی شده است.
+
+#### ویژگی‌های برجسته:
+1. **تبدیل خودکار به WebP بدون افت کیفیت**: کاهش حجم تصاویر تا ۷۵٪ بدون افت شفافیت.
+2. **واترمارک هوشمند با درگ اند دراپ**: امکان جابجایی آزاد واترمارک با ماوس یا لمس + ماتریس ۹ جهته و تنظیم اندازه از ۱۰٪ تا ۷۰٪.
+3. **طراحی اختصاصی کارت‌های رسانه**: کارت‌های کتابخانه رسانه و جعبه بارگذاری پرونده‌ها به تم تاریک و نئونی مدرن به همراه لوگوی WX تبدیل می‌شوند.
+4. **سیستم قفل امنیتی ضد دستکاری**: در صورت تغییر یا دستکاری کدهای افزونه، برای جلوگیری از هرگونه آسیب به سایت، افزونه بدون ایجاد Fatal Error متوقف می‌شود.
+5. **بروزرسانی خودکار و دستی**: دریافت آپدیت‌ها مستقیماً در صفحه «افزونه‌ها» در پیشخوان وردپرس به همراه دکمه بررسی دستی.
+6. **شناسایی خودکار زبان**: سازگاری ۱۰۰٪ با زبان فارسی و راست‌چین (RTL) خودکار بر اساس زبان کاربر و وردپرس.
+
+#### راهنمای نصب سریع:
+1. فایل **[`worx-image-optimizer.zip`](worx-image-optimizer.zip?raw=true)** را دانلود نمایید.
+2. در پیشخوان وردپرس به مسیر **افزونه‌ها > افزودن > بارگذاری افزونه** بروید.
+3. فایل زیپ را انتخاب و دکمه **نصب** و سپس **فعال‌سازی** را بزنید.
+4. وارد ویزارد راه‌اندازی سریع شده و تنظیمات دلخواه خود را اعمال فرمایید.
+
+</div>
+
+---
+
+## 🛡️ Architecture & Security
+
+- **Single-Query Configuration**: Entire configuration stored in a single serialized row in `wp_options` (`worx_settings`).
+- **Zero Frontend Execution**: Modules are isolated to administrative flows only.
+- **Fail-Safe Integrity**: SHA-256 verification prevents unauthorized file tampering.
+
+---
+
+## 📄 License & Credits
+
+Developed with ❤️ by **[obsifox studio](https://github.com/obsifox)**.  
+Licensed under the [GNU General Public License v2.0 or later](https://www.gnu.org/licenses/gpl-2.0.html).
