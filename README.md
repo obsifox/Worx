@@ -28,7 +28,8 @@
 - **Zero Frontend Bloat**: 0 external scripts, 0 CSS requests on the frontend, zero database bloat.
 - **True Lossless WebP**: Converts uploads to WebP in real time with up to **75% savings** in file size.
 - **Interactive Drag & Drop Watermark**: Drag your logo freely over live preview canvas or snap to a 9-anchor matrix.
-- **Cyberpunk Themed Media Library**: Media cards and upload dropzones adopt modern glowing Worx branding with the official WX logo.
+- **Worx Media Hub (Modern SaaS Workspace)**: Dedicated dark-first media management center with live instant search, file-type indicators (`WX IMG`, `WX WEBP`, `WX VIDEO`, `WX DOC`), slide-out inspector drawer with optimization analytics, floating bulk actions bar, and integrated dropzone.
+- **Bulk Image Optimizer**: Process and convert all existing library images with real-time progress and sequential processing.
 - **Fail-Safe Tamper Protection**: Automated cryptographic integrity check ensures files remain authentic without ever crashing or breaking your website.
 - **1-Click Auto & Manual Updates**: Integrates seamlessly with WordPress core update notifications directly from this GitHub repository.
 - **Intelligent Locale Auto-Detection**: Switches dynamically between **English** and **Persian (fa-IR)** based on user and site locale.
