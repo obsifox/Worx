@@ -36,6 +36,36 @@
 
 ---
 
+## 📸 Interface Preview (تصاویر محیط افزونه)
+
+<div align="center">
+
+### 1. Worx Media Hub — Next-Gen WordPress Asset Center
+*Dark-first media workspace with instant live search, format indicators (`WX WEBP`, `WX IMG`), and real-time inspector drawer.*  
+*(محیط مدرن و تاریک مدیا هاب با قابلیت جستجوی زنده، نشانگرهای اختصاصی فرمت و پنل کشویی اطلاعات و بهینه‌سازی)*
+
+<img src="docs/screenshot-media-hub.png" alt="Worx Media Hub Interface" width="960" style="border-radius:12px;box-shadow:0 12px 36px rgba(0,0,0,0.6);margin-bottom:32px;" />
+
+<br/><br/>
+
+### 2. Interactive Setup Wizard & Watermark Studio
+*Interactive live canvas with free drag & drop positioning, 9-anchor snap matrix, and granular WebP tuning.*  
+*(ویزارد هوشمند راه‌اندازی با بوم زنده، جابجایی آزاد واترمارک با ماوس یا لمس و ماتریس ۹ جهته)*
+
+<img src="docs/screenshot-watermark-wizard.png" alt="Worx Setup Wizard & Watermark Matrix" width="960" style="border-radius:12px;box-shadow:0 12px 36px rgba(0,0,0,0.6);margin-bottom:32px;" />
+
+<br/><br/>
+
+### 3. Bulk Optimizer & Batch Performance Engine
+*High-throughput local conversion queue with zero API costs, zero external dependencies, and real-time savings reporting.*  
+*(موتور پردازش دسته‌ای تصاویر بدون وابستگی به کلود یا APIهای جانبی و با گزارش‌دهی لحظه‌ای درصد صرفه‌جویی)*
+
+<img src="docs/screenshot-bulk-optimizer.png" alt="Worx Bulk Image Optimizer" width="960" style="border-radius:12px;box-shadow:0 12px 36px rgba(0,0,0,0.6);margin-bottom:32px;" />
+
+</div>
+
+---
+
 ## 🚀 Quick Installation
 
 1. Download **[`worx-image-optimizer.zip`](worx-image-optimizer.zip?raw=true)** from this repository.
