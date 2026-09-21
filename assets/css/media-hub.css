@@ -1,0 +1,140 @@
+/* ============================================================
+   Worx Media Hub - modern touches for the default Media Library.
+   Scoped under .wx-hub-* classes: no overrides of WP core styles.
+   ============================================================ */
+
+/* ---------- stat strip ---------- */
+.wx-hub-stats {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-left: 4px solid #7c4dff;
+	border-radius: 4px;
+	padding: 8px 14px;
+	font-size: 13px;
+	color: #1d2327;
+	max-width: 100%;
+}
+
+.wx-hub-stats .wx-icon {
+	color: #7c4dff;
+}
+
+.wx-hub-stats a {
+	margin-left: auto;
+	font-size: 12px;
+	font-weight: 600;
+	color: #7c4dff;
+	text-decoration: none;
+}
+
+.wx-hub-stats a:hover {
+	text-decoration: underline;
+}
+
+/* ---------- column cell ---------- */
+.wx-hub-cell {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.wx-hub-cell .wx-hub-muted {
+	color: #a7aaad;
+}
+
+.wx-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 2px 9px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 18px;
+	white-space: nowrap;
+}
+
+.wx-badge-save {
+	background: rgba(61, 220, 132, 0.13);
+	color: #1c7c46;
+	border: 1px solid rgba(61, 220, 132, 0.45);
+}
+
+.wx-badge-webp {
+	background: rgba(0, 170, 220, 0.10);
+	color: #0a6e8d;
+	border: 1px solid rgba(0, 170, 220, 0.40);
+}
+
+.wx-badge-wm {
+	background: rgba(124, 77, 255, 0.10);
+	color: #5a34c7;
+	border: 1px solid rgba(124, 77, 255, 0.40);
+}
+
+.wx-badge-none {
+	background: #f0f0f1;
+	color: #646970;
+	border: 1px solid #dcdcde;
+}
+
+/* ---------- reprocess button ---------- */
+.wx-hub-reprocess {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.wx-hub-reprocess .wx-icon {
+	color: #2271b1;
+}
+
+.wx-hub-reprocess.is-busy {
+	opacity: 0.65;
+	pointer-events: none;
+}
+
+.wx-hub-reprocess.is-busy .wx-icon {
+	animation: wx-spin 0.9s linear infinite;
+}
+
+@keyframes wx-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.wx-hub-status {
+	font-size: 11px;
+	color: #646970;
+}
+
+.wx-hub-status.is-error {
+	color: #d63638;
+}
+
+/* ---------- optimized row accent ---------- */
+.wx-webp-row td:first-child {
+	box-shadow: inset 3px 0 0 #3ddc84;
+}
+
+/* ============================================================
+   RTL
+   ============================================================ */
+body.rtl .wx-hub-stats {
+	border-left: 1px solid #dcdcde;
+	border-right: 4px solid #7c4dff;
+}
+
+body.rtl .wx-hub-stats a {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+body.rtl .wx-webp-row td:first-child {
+	box-shadow: inset -3px 0 0 #3ddc84;
+}
